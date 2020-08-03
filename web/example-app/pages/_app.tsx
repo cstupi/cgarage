@@ -2,7 +2,6 @@ import React from 'react'
 import {AppProps} from 'next/app'
 import Amplify from '@aws-amplify/core'
 import Auth from '@aws-amplify/auth'
-
 Amplify.configure({
   Auth: {
     region: 'us-east-1',
@@ -11,7 +10,7 @@ Amplify.configure({
     cookieStorage: {
       domain: process.env.AUTH_COOKIE_DOMAIN,
       path: '/',
-      expires: '365',
+      expires: 365,
       secure: false
     }
   }

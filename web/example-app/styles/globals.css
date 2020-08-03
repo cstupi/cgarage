@@ -14,3 +14,11 @@ a {
 * {
   box-sizing: border-box;
 }
+
+button {
+  margin: 40px;
+}
+.button {
+  color: red;
+  background-color: purple;
+}
