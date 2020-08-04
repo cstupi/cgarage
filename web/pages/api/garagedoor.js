@@ -1,4 +1,4 @@
-var jwt = require('jsonwebtoken');
+const jwt = require('jsonwebtoken');
 import pems from '../../../pems.json'
 const pem = pems[process.env.REGION][process.env.USER_POOL_ID][process.env.VERIFY_KEY]
 
@@ -19,7 +19,7 @@ export default async (req, res) => {
 
  
   try {
-    const result = await fetch(`${process.env.GARAGE_API}/garagedoor`)
+    const result = await fetch(`${process.env.GARAGE_API}/garagedoor`, { headers: new Headers({ 'authorization': req.headers['authorization'] }) })
     res.statusCode = 200
     res.json({ text: await result.text() })
   } catch(err) {
