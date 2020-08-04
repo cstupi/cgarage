@@ -14,7 +14,7 @@ fastify.get('/garagedoor', async (request, reply) => {
     throw err
   }
   try {
-    relay.writeSync(1)
+    relay.writeSync(0)
   } catch(err){
     fastify.log.error(`Garagedoor: ${err}`)
     throw err
@@ -23,15 +23,14 @@ fastify.get('/garagedoor', async (request, reply) => {
   return { result: 'success' }
 
   function Promisify() {
-    return new Promise(resolve => {
-      setTimeout(stop,100)
+    return new Promise((resolve, reject) => {
+      setTimeout(stop,150)
       function stop(){
         try {
-        fastify.log.info('Done triggering garage door')
-        relay.writeSync(0)
-        relay.unexport()
+          relay.writeSync(1)
+          relay.unexport()
         } catch(err){
-          fastify.log.error(`Error closing gpio ${err}`)
+          reject(err)
         }
         resolve('done')
       }

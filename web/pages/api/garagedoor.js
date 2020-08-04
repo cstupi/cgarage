@@ -11,6 +11,7 @@ export default async (req, res) => {
         resolve(decoded)
     }));
   } catch(err){
+    console.log(err)
     res.statusCode = 401
     res.json({ message: 'forbidden'})
     return
