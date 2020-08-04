@@ -6,15 +6,15 @@ import {
   useAuthFunctions,
   getServerSideAuth
 } from '../auth'
-async function openGarage() {
-  const result = await fetch('/api/garagedoor')
+async function openGarage(token) {
+  console.log(token)
+  const result = await fetch('/api/garagedoor', { headers: new Headers({ 'Authorization': token})})
   const data = await result.json()
   console.log(data)
 }
 const Home = (props: { initialAuth: AuthTokens }) => {
   const auth = useAuth(props.initialAuth)
   const { login, logout } = useAuthFunctions()
-
   return (
     <React.Fragment>
       {auth ? (
@@ -30,7 +30,9 @@ const Home = (props: { initialAuth: AuthTokens }) => {
             </button>
           </div>
           <div>
-            <button className="button" type="button" onClick={async () => await openGarage()}>Open Dublin Garage Door</button>
+          </div>
+          <div>
+            <button className="button" type="button" onClick={async () => await openGarage(auth.accessToken)}>Open Dublin Garage Door</button>
           </div>
         </div>
       ) : (

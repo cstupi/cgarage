@@ -2,9 +2,10 @@ import React from 'react'
 import {AppProps} from 'next/app'
 import Amplify from '@aws-amplify/core'
 import Auth from '@aws-amplify/auth'
+
 Amplify.configure({
   Auth: {
-    region: 'us-east-1',
+    region: process.env.REGION,
     userPoolId: process.env.USER_POOL_ID,
     userPoolWebClientId: process.env.USER_POOL_CLIENT_ID,
     cookieStorage: {
