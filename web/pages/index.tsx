@@ -6,12 +6,15 @@ import {
   useAuthFunctions,
   getServerSideAuth
 } from '../auth'
+
+
 async function openGarage(token) {
-  console.log(token)
-  const result = await fetch('/api/garagedoor', { headers: new Headers({ 'Authorization': token})})
+  const result = await fetch('/api/garagedoor', { headers: new Headers({ 'authorization': token})})
   const data = await result.json()
   console.log(data)
 }
+
+
 const Home = (props: { initialAuth: AuthTokens }) => {
   const auth = useAuth(props.initialAuth)
   const { login, logout } = useAuthFunctions()
