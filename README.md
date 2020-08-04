@@ -16,7 +16,8 @@ module.exports = (phase) => {
           REDIRECT_SIGN_IN: 'http://localhost:3000/token',   
           REDIRECT_SIGN_OUT: 'http://localhost:3000/',   
           AUTH_COOKIE_DOMAIN: 'localhost',   
-          VERIFY_KEY: 'PEM KEY API SHOULD USE TO VERIFY JWT'   
+          VERIFY_KEY: 'PEM KEY API SHOULD USE TO VERIFY JWT',
+          GARAGE_API: 'localhost:8080'  
         }   
       }  
     default:   
@@ -29,7 +30,8 @@ module.exports = (phase) => {
           REDIRECT_SIGN_IN: 'http://localhost:3000/token',  
           REDIRECT_SIGN_OUT: 'http://localhost:3000/',  
           AUTH_COOKIE_DOMAIN: 'localhost',  
-          VERIFY_KEY: 'PEM KEY API SHOULD USE TO VERIFY JWT'  
+          VERIFY_KEY: 'PEM KEY API SHOULD USE TO VERIFY JWT',  
+          GARAGE_API: 'localhost:8080'  
         }  
       }  
   }  
