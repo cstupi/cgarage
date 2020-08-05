@@ -9,7 +9,7 @@ import {
 
 
 async function openGarage(token) {
-  const result = await fetch('/api/garage/garagedoor', { headers: new Headers({ 'authorization': token})})
+  const result = await fetch('/api/garagedoor', { headers: new Headers({ 'authorization': token})})
   const data = await result.json()
   console.log(data)
 }

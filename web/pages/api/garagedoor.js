@@ -1,5 +1,5 @@
 const jwt = require('jsonwebtoken');
-import pems from '../../../../pems.json'
+import pems from '../../../pems.json'
 const pem = pems[process.env.REGION][process.env.USER_POOL_ID][process.env.VERIFY_KEY]
 
 export default async (req, res) => {
