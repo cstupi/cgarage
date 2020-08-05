@@ -23,7 +23,6 @@ fastify.get('/garagedoor', async (request, reply) => {
     throw new Error('Forbidden')
   }
   fastify.log.info('Triggering garage door')
-  return { result: 'success' }
   let relay = null
   try {
     relay = new gpio(4,'out')
