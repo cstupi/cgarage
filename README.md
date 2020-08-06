@@ -9,6 +9,7 @@ module.exports = (phase) => {
     case 'phase-development-server':  
       return {   
         env: {  
+          PREFIX: '',
           REGION: 'us-east-1',  
           IDP_DOMAIN: 'COGNITO DOMAIN',  
           USER_POOL_ID: 'POOL ID', 
@@ -22,7 +23,9 @@ module.exports = (phase) => {
       }  
     default:   
       return {  
-        env: {  
+        assetPrefix: '/VIRTUAL DIR',
+        env: { 
+          PREFIX: '/VIRTUAL DIR',
           REGION: 'us-east-1',  
           IDP_DOMAIN: 'COGNITO DOMAIN',  
           USER_POOL_ID: 'POOL ID',  
