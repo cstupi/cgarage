@@ -11,7 +11,7 @@ export default function TokenSetter() {
   const router = useRouter()
   useAuthRedirect(() => {
     const redirectUriAfterSignIn =
-      extractFirst(queryString.parse(window.location.search).to || '') || '/'
+      extractFirst(queryString.parse(window.location.search).to || '') || `${process.env.PREFIX}/`
     router.replace(redirectUriAfterSignIn)
   })
   return <p>loading..</p>
