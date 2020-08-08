@@ -20,27 +20,38 @@ const Home = (props: { initialAuth: AuthTokens }) => {
   const { login, logout } = useAuthFunctions()
   return (
     <React.Fragment>
+      <style jsx>{`
+          button {
+            margin: 5em;
+            border-radius: 2em;
+            border-width: 0;
+          } 
+          button:hover {
+            border-color: black;
+            border-width: .2em;
+            border-style: solid
+          }
+          .sign {
+            height: 5em;
+            width: 10em;
+          }
+          `}</style>
       {auth ? (
         <div>
-          <style jsx>{`
-          button {
-            margin: 40px;
-          } 
-          `}</style>
           <div>
-            <button type="button" onClick={() => logout()}>
+            <button type="button" className="sign" onClick={() => logout()}>
               sign out
             </button>
           </div>
           <div>
           </div>
           <div>
-            <button className="button" type="button" onClick={async () => await openGarage(auth.accessToken)}>Open Dublin Garage Door</button>
+            <button type="button" onClick={async () => await openGarage(auth.accessToken)}>Open Dublin Garage Door</button>
           </div>
         </div>
       ) : (
         <React.Fragment>
-          <button type="button" onClick={() => login()}>
+          <button type="button" className="sign" onClick={() => login()}>
             sign in
           </button>
         </React.Fragment>
