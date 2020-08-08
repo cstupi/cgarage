@@ -9,7 +9,7 @@ import {
 
 
 async function openGarage(token) {
-  const result = await fetch(`${process.env.PREFIX}/api/garagedoor`, { headers: new Headers({ 'authorization': token})})
+  const result = await fetch(`${process.env.PREFIX ?? ''}/api/garagedoor`, { headers: new Headers({ 'authorization': token})})
   const data = await result.json()
   console.log(data)
 }
@@ -22,9 +22,12 @@ const Home = (props: { initialAuth: AuthTokens }) => {
     <React.Fragment>
       <style jsx>{`
           button {
+            font-size: 1.2em;
+            font-weight: bold;
             margin: 5em;
             border-radius: 2em;
             border-width: 0;
+            padding: 1em;
           } 
           button:hover {
             border-color: black;
