@@ -50,7 +50,7 @@ const Home = (props: { initialAuth: AuthTokens }) => {
           <div>
           </div>
           <div>
-            { doors.map((d) =>  <button type="button" key={d.Label} onClick={async () => await openGarage(auth.accessToken, d.Pin)}>{d.Label}</button>) }
+            { doors.map((d: { Label: string; Pin: any }) =>  <button type="button" key={d.Label} onClick={async () => await openGarage(auth.accessToken, d.Pin)}>{d.Label}</button>) }
           </div>
         </div>
       ) : (
