@@ -8,12 +8,12 @@ import {
 } from '../auth'
 
 
-async function openGarage(token) {
-  const result = await fetch(`${process.env.PREFIX ?? ''}/api/garagedoor`, { headers: new Headers({ 'authorization': token})})
+async function openGarage(token, pin) {
+  const result = await fetch(`${process.env.PREFIX ?? ''}/api/garagedoor/${pin}`, { headers: new Headers({ 'authorization': token})})
   const data = await result.json()
   console.log(data)
 }
-
+const doors = process.env.DOOR_DATA ? JSON.parse(process.env.DOOR_DATA) : [{ Label: 'Open', Pin: 4 }]
 
 const Home = (props: { initialAuth: AuthTokens }) => {
   const auth = useAuth(props.initialAuth)
@@ -28,6 +28,7 @@ const Home = (props: { initialAuth: AuthTokens }) => {
             border-radius: 2em;
             border-width: 0;
             padding: 1em;
+            
           } 
           button:hover {
             border-color: black;
@@ -49,7 +50,7 @@ const Home = (props: { initialAuth: AuthTokens }) => {
           <div>
           </div>
           <div>
-            <button type="button" onClick={async () => await openGarage(auth.accessToken)}>Open Dublin Garage Door</button>
+            { doors.map((d) =>  <button type="button" key={d.Label} onClick={async () => await openGarage(auth.accessToken, d.Pin)}>{d.Label}</button>) }
           </div>
         </div>
       ) : (
