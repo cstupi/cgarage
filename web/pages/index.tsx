@@ -7,14 +7,18 @@ import {
   getServerSideAuth
 } from '../auth'
 
+class DoorInfo {
+  Label: string
+  Pin: Number
+}
 
 async function openGarage(token, pin) {
   const result = await fetch(`${process.env.PREFIX ?? ''}/api/garagedoor/${pin}`, { headers: new Headers({ 'authorization': token})})
   const data = await result.json()
   console.log(data)
 }
-const doors = process.env.DOOR_DATA ? JSON.parse(process.env.DOOR_DATA) : [{ Label: 'Open', Pin: 4 }]
 
+const doors = process.env.DOOR_DATA ? process.env.DOOR_DATA as unknown as DoorInfo[] : [{ Label: 'Open', Pin: 4 }]
 const Home = (props: { initialAuth: AuthTokens }) => {
   const auth = useAuth(props.initialAuth)
   const { login, logout } = useAuthFunctions()
@@ -50,7 +54,8 @@ const Home = (props: { initialAuth: AuthTokens }) => {
           <div>
           </div>
           <div>
-            { doors.map((d: { Label: string; Pin: any }) =>  <button type="button" key={d.Label} onClick={async () => await openGarage(auth.accessToken, d.Pin)}>{d.Label}</button>) }
+            { doors.map(((d: DoorInfo) =>  <button type="button" key={d.Label} onClick={async () => 
+              await openGarage(auth.accessToken, d.Pin)}>{d.Label}</button>)) }
           </div>
         </div>
       ) : (
