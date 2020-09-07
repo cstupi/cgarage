@@ -13,7 +13,7 @@ const garageCtrl = async (req, res, pin) => {
   fastify.log.info(`triggering garage on port ${pin}`)
   if(!process.env.DEVELOPMENT){
     try {
-      const userInfo = await new Promise((resolve,reject) => jwt.verify(request.headers['authorization'], pem, function(err, decoded) {
+      const userInfo = await new Promise((resolve,reject) => jwt.verify(req.headers['authorization'], pem, function(err, decoded) {
         if(err)
           reject(err)
         else
