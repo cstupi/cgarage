@@ -34,7 +34,10 @@ module.exports = (phase) => {
           REDIRECT_SIGN_OUT: 'http://localhost:3000/',  
           AUTH_COOKIE_DOMAIN: 'localhost',  
           VERIFY_KEY: 'PEM KEY API SHOULD USE TO VERIFY JWT',  
-          GARAGE_API: 'localhost:8080'  
+          GARAGE_API: 'localhost:8080',
+          DOOR_DATA: [
+            { Label: 'Main', Pin: 4}
+          ]
         }  
       }  
   }  
