@@ -30,7 +30,7 @@ const garageCtrl = async (req, res, pin) => {
   
   try {
     
-    await PinControl.TogglePin(4);
+    await PinControl.TogglePin(pin);
     return { result: 'success' }
   } catch(err) {
     fastify.log.error(err)
